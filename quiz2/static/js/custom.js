@@ -20,7 +20,9 @@ $(document).ready(function() {
 			state = $(this).val().length >= $group.data('length') ? true : false;
 		}else if ($group.data('validate') == "number") {
 			state = !isNaN(parseFloat($(this).val())) && isFinite($(this).val());
-		}else if ($group.data('validate') == "password") {
+		}else if ($group.data('validate') == "number2"){
+			state = /^\d{7}?$/.test($(this).val());
+    }else if ($group.data('validate') == "password") {
 				state = /^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/.test($(this).val())
 		}else if ($group.data('validate') == "passwordv") {
       var pass1 = document.getElementById("id_password1").value;

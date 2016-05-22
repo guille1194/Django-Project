@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}Agregar Obra{% endblock %}
+{% block title %}Agregar Empleado{% endblock %}
 {% block page_title %}
   <div class="container-fluid">
-    <h4 class="h4" style="text-align: center;">Agregar Obra.</h4>
+    <h4 class="h4" style="text-align: center;">Agregar Empleado.</h4>
   </div>
 
   <div class="container-fluid">
@@ -32,24 +32,21 @@
 
             <p><label for="id_employee_last_name" class="h6">Apellido empleado:</label><br><input class="col-xs-12" id="id_employee_last_name" maxlength="50" name="employee_last_name" type="text" /></p>
 
-            <div class="form-group">
-            <div class="input-group" data-validate="matricula">
+          <div class="input-group" data-validate="matricula">
             <p><label for="id_employee_number" class="h6">Matricula empleado:</label><br><input class="col-xs-12" id="id_employee_number" maxlength="50" name="employee_number" type="text" required/></p>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
-        </div>
-        <div class="form-group">
+
           <div class="input-group" data-validate="horas">
-            <p><label for="id_employee_work_hours" class="h6">Horas trabajadas:</label><br><input class="col-xs-12" id="id_employee_work_hours" maxlength="50" name="employee_work_hours" type="text" /></p>
+            <p><label for="id_employee_work_hours" class="h6">Horas trabajadas:</label><br><input class="col-xs-12" id="id_employee_work_hours" maxlength="50" name="employee_work_hours" type="text" required/></p>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
-        </div>
-        <div class="form-group">
+
+
           <div class="input-group" data-validate="salario">
-            <p><label for="id_employee_wages" class="h6">Salario:</label><br><input class="col-xs-12" id="id_employee_wages" maxlength="50" name="employee_wages" type="text" /></p>
+            <p><label for="id_employee_wages" class="h6">Salario:</label><br><input class="col-xs-12" id="id_employee_wages" maxlength="50" name="employee_wages" type="text" required/></p>
           <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
-        </div>
 <!--
             <p><label for="id_description" class="h6">Description:</label><textarea class="col-xs-12" id="id_description" maxlength="200" name="description" style="height: 100px">
             </textarea></p> -->

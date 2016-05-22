@@ -58,14 +58,20 @@
 
 				<div class="input-group col-xs-8 col-xs-push-2">
 					<div class="input-group-addon" id="basic-addon1"><a class="glyphicon"></a></div>
-					<input name="mail" id="id_mail" type="text" class="form-control" placeholder="email" aria-describedby="basic-addon1">
+					<div class="input-group" data-validate="email">
+					<input name="mail" id="id_mail" type="text" class="form-control" placeholder="email" aria-describedby="basic-addon1" required>
+					<span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+				</div>
 				</div>
 
 				<label></label>
 
 				<div class="input-group col-xs-8 col-xs-push-2">
 					<div class="input-group-addon" id="basic-addon1"><a class="glyphicon"></a></div>
-					<input name="phone" id="id_phone" type="text" class="form-control" placeholder="telefono" aria-describedby="basic-addon1">
+					<div class="input-group" data-validate="number2">
+					<input name="phone" id="id_phone" type="text" class="form-control" placeholder="telefono" aria-describedby="basic-addon1" required>
+					<span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+				</div>
 				</div>
 
 				<label></label>
