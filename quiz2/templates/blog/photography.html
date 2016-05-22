@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+{% load staticfiles %}
+{% block page_title %}
+  <div class="container-fluid">
+    <h4 class="h4" style="text-align: center;">Fotografia.</h4>
+  </div>
+
+  <div class="container-fluid">
+    <label><br></label>
+  </div>
+{% endblock %}
+{% block content %}
+<html>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<link href = "{% static 'bootstrap/css/bootstrap.min.css'%}" rel="stylesheet" media = "screen">
+
+<div class="container-fluid bg-1 text-center">
+<body>
+	<div class ="table-responsive">
+		<table class="table table-striped">
+			<tr>
+				<th>Artista</th>
+				<th>Obra</th>
+				<th>Tecnica</th>
+				<th>Imagen</th>
+			</tr>
+
+			{% for item in object_list %}
+			<tr>
+				<td>{{item.artist | capfirst}}</td>
+				<td>{{item.art_name | capfirst}}</td>
+				<td>{{item.art_type | capfirst}}</td>
+				<td><a href="{% url 'art_detail' id=item.id %}"><img src="{{ item.art_photo.url }}" class="img img-responsive" style="height:40px; horizontal-align: right;"></a></td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+	{% if mensaje %}
+		<h3>{{mensaje}}</h3>
+	{% endif %}
+	</div>
+</body>
+</html>
+{% endblock %}

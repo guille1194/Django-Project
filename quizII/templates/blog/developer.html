@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+{% load staticfiles %}
+{% block page_title %}
+  <div class="container-fluid">
+    <h4 class="h4" style="text-align: center;">Desarrollador.</h4>
+  </div>
+
+  <div class="container-fluid">
+    <label><br></label>
+  </div>
+{% endblock %}
+{% block content %}
+<html>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<link href = "{% static 'bootstrap/css/bootstrap.min.css'%}" rel="stylesheet" media = "screen">
+
+<div class="container-fluid bg-1 text-center">
+<body>
+	<div class ="table-responsive">
+		<table class="table table-striped">
+			<tr>
+				<th>Empleado</th>
+				<th>Apellido</th>
+				<th>Matricula</th>
+				<th>Departamento</th>
+        <th>Horas trabajadas</th>
+        <th>Salario</th>
+			</tr>
+
+			{% for item in object_list %}
+			<tr>
+				<td>{{item.employee_name | capfirst}}</td>
+				<td>{{item.employee_last_name | capfirst}}</td>
+				<td>{{item.employee_number | capfirst}}</td>
+        <td>{{item.employee_department | capfirst}}</td>
+        <td>{{item.employee_work_hours | capfirst}}</td>
+        <td>{{item.employee_wages | capfirst}}</td>
+				<td><a href="{% url 'employee_detail' id=item.id %}"></a></td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+	{% if mensaje %}
+		<h3>{{mensaje}}</h3>
+	{% endif %}
+	</div>
+</body>
+</html>
+{% endblock %}

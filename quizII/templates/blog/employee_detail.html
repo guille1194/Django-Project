@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}{{ employee.employee_name | title }} Detalle{% endblock %}
+{% block page_title %}
+  <div class="container-fluid">
+    <h4 class="h4" style="text-align: center;">Detalle {{ employee.employee_name | title }}.</h4>
+  </div>
+
+  <div class="container-fluid">
+    <label><br></label>
+  </div>
+{% endblock %}
+{% block content %}
+
+
+        <div class="row" >
+          <div class="col-xs-12">
+            <div class="thumbnail col-xs-12"><br>
+
+              <h3 style="text-align: center">{{ employee.employee_name | title }}</h3>
+              <h6 style="text-align: center">{{ employee.employee_last_name | title }}</h6>
+              <p style="text-align: center">{{ employee.employee_number | capfirst }}</p><br>
+              <p style="text-align: center">{{ employee.employee_department | capfirst }}</p><br>
+              <p style="text-align: center">{{ employee.employee_work_hours | capfirst }}</p><br>
+              <p style="text-align: center">{{ employee.employee_wages | capfirst }}</p><br>
+
+              <p style="text-align: right;font-size: 12px;padding-right: 10pt">{{ employee.publish_date }}
+              {% if user.username == employee.profile.user_profile.username %}
+              <a style="text-align: right;font-size: 12px;padding-right: 5pt"> <a href="{% url 'employee_update' id=employee.id %}"><span class="label label-pill label-info"><i class="glyphicon glyphicon-pencil"></i></a>
+              <a style="text-align: right;font-size: 12px;padding-right: 5pt"> <a href="{% url 'employee_delete' id=employee.id %}"><span class="label label-pill label-danger"><i class="glyphicon glyphicon-remove"></i></a>
+              {% endif %}
+              </p>
+              <div class="caption" ></div>
+            </div>
+          </div>
+        </div>
+
+    <a href="/lista_empleados" class="btn btn-default col-xs-4 col-xs-push-4" role="button">Home</a>
+
+{% endblock %}

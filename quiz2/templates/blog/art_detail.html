@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}{{ art.art_name | title }} Detalle{% endblock %}
+{% block page_title %}
+  <div class="container-fluid">
+    <h4 class="h4" style="text-align: center;">Detalle {{ art.art_name | title }}.</h4>
+  </div>
+
+  <div class="container-fluid">
+    <label><br></label>
+  </div>
+{% endblock %}
+{% block content %}
+
+
+
+    {% if art.art_photo %}
+        <div class="row" >
+          <div class="col-xs-12">
+            <div class="thumbnail col-xs-12">
+              <img src="{{ art.art_photo.url }}" alt="" class="img-responsive">
+              <div class="caption" ></div>
+              <h3 style="text-align: center">{{ art.art_name | title }}</h3>
+              <h6 style="text-align: center">{{ art.artist | title }}</h6>
+              <p style="text-align: center">{{ art.description | capfirst }}</p>
+              <p style="text-align: right;font-size: 12px;padding-right: 10pt">{{ art.publish_date }}
+              {% if user.username == art.artist.user_profile.username %}
+              <a style="text-align: right;font-size: 12px;padding-right: 5pt"> <a href="{% url 'art_update' id=art.id %}"><span class="label label-pill label-info"><i class="glyphicon glyphicon-pencil"></i></a>
+              <a style="text-align: right;font-size: 12px;padding-right: 5pt"> <a href="{% url 'art_delete' id=art.id %}"><span class="label label-pill label-danger"><i class="glyphicon glyphicon-remove"></i></a>
+              {% endif %}
+              </p>
+
+              <!-- <p>
+                <a href=""></a> <a href="#" class="btn btn-primary" role="button">Btn</a>
+                <a href=""></a> <a href="#" class="btn btn-default" role="button">Btn</a>
+              </p> -->
+
+              <p ></p>
+            </div>
+          </div>
+        </div>
+    {% else %}
+        <div class="row" >
+          <div class="col-xs-12">
+            <div class="thumbnail col-xs-12"><br>
+
+              <h3 style="text-align: center">{{ art.art_name | title }}</h3>
+              <h6 style="text-align: center">{{ art.artist | title }}</h6>
+              <p style="text-align: center">{{ art.description | capfirst }}</p><br>
+              <p style="text-align: right;font-size: 12px;padding-right: 10pt">{{ art.publish_date }}
+              {% if user.username == art.artist.user_profile.username %}
+              <a style="text-align: right;font-size: 12px;padding-right: 5pt"> <a href="{% url 'art_update' id=art.id %}"><span class="label label-pill label-info"><i class="glyphicon glyphicon-pencil"></i></a>
+              <a style="text-align: right;font-size: 12px;padding-right: 5pt"> <a href="{% url 'art_delete' id=art.id %}"><span class="label label-pill label-danger"><i class="glyphicon glyphicon-remove"></i></a>
+              {% endif %}
+              </p>
+              <div class="caption" ></div>
+            </div>
+          </div>
+        </div>
+    {% endif %}
+
+    <a href="/lista_arte" class="btn btn-default col-xs-4 col-xs-push-4" role="button">Home</a>
+
+{% endblock %}

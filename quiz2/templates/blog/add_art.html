@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Agregar Obra{% endblock %}
+{% block page_title %}
+  <div class="container-fluid">
+    <h4 class="h4" style="text-align: center;">Agregar Obra.</h4>
+  </div>
+
+  <div class="container-fluid">
+    <label><br></label>
+  </div>
+{% endblock %}
+{% block content %}
+    {% if user.is_active %}
+
+
+
+    <div class="field-row">
+        <form method="POST" enctype="multipart/form-data" action="" class="col-sm-8 col-sm-push-2">
+            {% csrf_token %}
+
+
+            {% if err %}
+                <div class="alert alert-danger col-xs-12" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                &nbsp;Algo esta mal.
+                </div>
+            {% endif %}
+
+            <p><label for="id_artist" class="h6" style="margin-right: 1em">Artista:</label><select id="id_artist" name="artist">
+            <option value="{{ user.artist.id }}" selected="selected">{{user.username}}</option>
+            </select></p>
+
+            <p><label for="id_art_name" class="h6">Titulo:</label><br><input class="col-xs-12" id="id_art_name" maxlength="50" name="art_name" type="text" /></p>
+
+            <p><label for="id_art_photo" class="h6">Imagen:</label><br><input id="id_art_photo" name="art_photo" type="file"/></p>
+<!--
+            <p><label for="id_description" class="h6">Description:</label><textarea class="col-xs-12" id="id_description" maxlength="200" name="description" style="height: 100px">
+            </textarea></p> -->
+
+            <textarea cols="40" id="id_description" maxlength="200" name="description" rows="3" class="form-control col-xs-12" style="font-size: 14px;" type="text"></textarea>
+
+            <p><label for="id_art_type" class="h6" style="margin-right: 1em"><br>Tecnica:</label><select id="id_art_type" name="art_type">
+            <option value="">---------</option>
+            <option value="Painting">Pintura</option>
+            <option value="Photography">Fotografia</option>
+            <option value="Sculpting">Escultura</option>
+            <option value="Film">Pelicula</option>
+            </select></p>
+
+            <p><input class="btn btn-primary col-xs-12" type="submit" value="Agregar Obra"><br></p>
+
+            {% if success %}
+            <p>
+                <div class="alert alert-success col-xs-12" role="alert" style="text-align:center">
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    <span class="sr-only">Exito:</span>
+                    &nbsp;Arte agregado.
+                </div>
+            </p>
+            {% endif %}
+            {% if fail %}
+                <div class="alert alert-danger col-xs-8 col-xs-push-2" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                &nbsp;Algo esta mal.
+                </div>
+            {% endif %}
+
+        </form>
+    </div>
+
+    {% else %}
+    {% endif %}
+
+
+{% endblock %}
+
+
+
+    <!-- <div class="field-row">
+        <form method="POST" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Do it">
+        </form>
+    </div>    -->
+
+
+    <!-- <div class="dropdown">
+        <button class="btn btn-default col-xs-12 dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownMenu1" aria-haspopup="true" aria-expanded="true">
+            Artist
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#">{{user.username}}</a></li>
+
+        </ul>
+    </div> -->

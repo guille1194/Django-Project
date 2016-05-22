@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Agregar obra{% endblock %}
+{% block page_title %}
+  <div class="container-fluid">
+    <h4 class="h4" style="text-align: center;">Agregar obra.{{mensjae}}</h4>
+  </div>
+
+  <div class="container-fluid">
+    <label><br></label>
+  </div>
+{% endblock %}
+{% block content %}
+    {% if user.is_active %}
+
+        {% if form.errors %}
+            <div class="alert alert-danger col-xs-8 col-xs-push-2" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            &nbsp;Algo esta mal.
+            </div>
+        {% endif %}
+
+    <div class="field-row">
+        <form method="POST" enctype="multipart/form-data" action="" class="col-sm-8 col-sm-push-2">
+            {% csrf_token %}
+
+            <p><label for="id_artist" class="h6" style="margin-right: 1em">Artista:</label><select id="id_artist" name="artist">
+            <option value="{{ user.artist.id }}" selected="selected">{{user.username}}</option>
+            </select></p>
+
+            <p><label for="id_art_name" class="h6">Titulo:</label><br><input class="col-xs-12" id="id_art_name" maxlength="50" name="art_name" type="text" /></p>
+
+            <p><label for="id_art_photo" class="h6">Imagen:</label><br><input id="id_art_photo" name="art_photo" type="file"/></p>
+
+            <textarea cols="40" id="id_description" maxlength="200" name="description" rows="3" class="form-control col-xs-12" style="font-size: 14px;" type="text"></textarea>
+
+            <p><label for="id_art_type" class="h6">Tipo:</label><br><input class="col-xs-12" id="id_art_type" maxlength="50" name="art_type" type="text"/><br></p>
+
+            <input class="btn btn-primary col-xs-12" type="submit" value="Add artwork">
+
+        </form>
+    </div>
+
+
+    {% else %}
+    {% endif %}
+
+
+{% endblock %}

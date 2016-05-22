@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Indice{% endblock %}
+
+{% block page_title %}
+  <div class="container-fluid">
+    <h4 class="h4" style="text-align: center;">Empleados.</h4>
+  </div>
+
+  <div class="container-fluid">
+    <label><br></label>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+  {% for employee in employees %}
+        <div class="row" >
+          <div class="col-xs-12">
+            <div class="thumbnail col-xs-12"><br>
+
+              <h3 style="text-align: center">{{ employee.employee_name | title }}</h3>
+              <h6 style="text-align: center">{{ employee.employee_last_name | title }}</h6>
+              <p style="text-align: center">{{ employee.employee_department | capfirst }}</p><br>
+              <!-- <p>
+                <a href=""></a> <a href="#" class="btn btn-primary" role="button">Btn</a>
+                <a href=""></a> <a href="#" class="btn btn-default" role="button">Btn</a>
+              </p> -->
+              <div class="caption" ></div>
+            </div>
+          </div>
+        </div>
+    {% endif %}
+  {% endfor %}
+
+{% endblock %}

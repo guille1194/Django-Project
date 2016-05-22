@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}Agregar Obra{% endblock %}
+{% block page_title %}
+  <div class="container-fluid">
+    <h4 class="h4" style="text-align: center;">Agregar Obra.</h4>
+  </div>
+
+  <div class="container-fluid">
+    <label><br></label>
+  </div>
+{% endblock %}
+{% block content %}
+    {% if user.is_active %}
+
+
+
+    <div class="field-row">
+        <form method="POST" enctype="multipart/form-data" action="" class="col-sm-8 col-sm-push-2">
+            {% csrf_token %}
+
+
+            {% if err %}
+                <div class="alert alert-danger col-xs-12" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                &nbsp;Algo esta mal.
+                </div>
+            {% endif %}
+
+            <p><label for="id_employee_name" class="h6">Nombre empleado:</label><br><input class="col-xs-12" id="id_employee_name" maxlength="50" name="employee_name" type="text" /></p>
+
+            <p><label for="id_employee_last_name" class="h6">Apellido empleado:</label><br><input class="col-xs-12" id="id_employee_last_name" maxlength="50" name="employee_last_name" type="text" /></p>
+
+            <div class="form-group">
+            <div class="input-group" data-validate="matricula">
+            <p><label for="id_employee_number" class="h6">Matricula empleado:</label><br><input class="col-xs-12" id="id_employee_number" maxlength="50" name="employee_number" type="text" required/></p>
+            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group" data-validate="horas">
+            <p><label for="id_employee_work_hours" class="h6">Horas trabajadas:</label><br><input class="col-xs-12" id="id_employee_work_hours" maxlength="50" name="employee_work_hours" type="text" /></p>
+            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group" data-validate="salario">
+            <p><label for="id_employee_wages" class="h6">Salario:</label><br><input class="col-xs-12" id="id_employee_wages" maxlength="50" name="employee_wages" type="text" /></p>
+          <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+          </div>
+        </div>
+<!--
+            <p><label for="id_description" class="h6">Description:</label><textarea class="col-xs-12" id="id_description" maxlength="200" name="description" style="height: 100px">
+            </textarea></p> -->
+
+            <p><label for="id_employee_department" class="h6" style="margin-right: 1em"><br>Departamento:</label><select id="id_employee_department" name="employee_department">
+            <option value="">---------</option>
+            <option value="IT">IT</option>
+            <option value="Electronics">Electronica</option>
+            <option value="Developer">Desarrollo</option>
+            <option value="Support">Soporte</option>
+            </select></p>
+
+            <p><input class="btn btn-primary col-xs-12" type="submit" value="Agregar Empleado"><br></p>
+
+            {% if success %}
+            <p>
+                <div class="alert alert-success col-xs-12" role="alert" style="text-align:center">
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    <span class="sr-only">Exito:</span>
+                    &nbsp;Empleado agregado.
+                </div>
+            </p>
+            {% endif %}
+            {% if fail %}
+                <div class="alert alert-danger col-xs-8 col-xs-push-2" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                </div>
+            {% endif %}
+
+        </form>
+    </div>
+
+    {% else %}
+    {% endif %}
+
+
+{% endblock %}
+
+
+
+    <!-- <div class="field-row">
+        <form method="POST" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Do it">
+        </form>
+    </div>    -->
+
+
+    <!-- <div class="dropdown">
+        <button class="btn btn-default col-xs-12 dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownMenu1" aria-haspopup="true" aria-expanded="true">
+            Artist
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#">{{user.username}}</a></li>
+
+        </ul>
+    </div> -->

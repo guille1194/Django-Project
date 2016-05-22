@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Indice{% endblock %}
+
+{% block page_title %}
+  <div class="container-fluid">
+    <h4 class="h4" style="text-align: center;"></h4>
+  </div>
+
+  <div class="container-fluid">
+    <label><br></label>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+  {% for art in object_list %}
+    {% if art.art_photo %}
+        <div class="row" >
+          <div class="col-xs-12">
+            <div class="thumbnail col-xs-12">
+              <img src="{{ art.art_photo.url }}" alt="" class="img-responsive">
+              <div class="caption" ></div>
+              <a href="{% url 'art_detail' id=art.id %}"><h3 style="text-align: center">{{ art.art_name | title }}</h3></a>
+              <h6 style="text-align: center">{{ art.artist | title }}</h6>
+              <p style="text-align: center">{{ art.description | capfirst }}</p>
+              <p style="text-align: right;font-size: 12px;padding-right: 10pt">{{ art.publish_date }}
+              </p>
+              <p ></p>
+            </div>
+          </div>
+        </div>
+    {% else %}
+        <div class="row" >
+          <div class="col-xs-12">
+            <div class="thumbnail col-xs-12"><br>
+
+              <a href="{% url 'art_detail' id=art.id %}"><h3 style="text-align: center">{{ art.art_name | title }}</h3></a>
+              <h6 style="text-align: center">{{ art.artist | title }}</h6>
+              <p style="text-align: center">{{ art.description | capfirst }}</p><br>
+              <p style="text-align: right;font-size: 12px;padding-right: 10pt">{{ art.publish_date }}
+              </p>
+
+              <div class="caption" ></div>
+            </div>
+          </div>
+        </div>
+    {% endif %}
+  {% endfor %}
+
+  <div class="pagination">
+    <span class="step-links">
+        {% if object_list.has_previous %}
+            <a href="?page={{ object_list.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}
+        </span>
+
+        {% if object_list.has_next %}
+            <a href="?page={{ object_list.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}

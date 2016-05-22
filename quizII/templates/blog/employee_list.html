@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Indice{% endblock %}
+
+{% block page_title %}
+  <div class="container-fluid">
+    <h4 class="h4" style="text-align: center;"></h4>
+  </div>
+
+  <div class="container-fluid">
+    <label><br></label>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+  {% for employee in object_list %}
+        <div class="row" >
+          <div class="col-xs-12">
+            <div class="thumbnail col-xs-12"><br>
+
+              <a href="{% url 'employee_detail' id=employee.id %}"><h3 style="text-align: center">{{ employee.employee_name | title }}</h3></a>
+              <h6 style="text-align: center">{{ employee.employee_last_name | title }}</h6>
+              <p style="text-align: center">{{ employee.employee_department | capfirst }}</p><br>
+              <p style="text-align: right;font-size: 12px;padding-right: 10pt">{{ employee.publish_date }}
+              </p>
+
+              <div class="caption" ></div>
+            </div>
+          </div>
+        </div>
+  {% endfor %}
+
+  <div class="pagination">
+    <span class="step-links">
+        {% if object_list.has_previous %}
+            <a href="?page={{ object_list.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}
+        </span>
+
+        {% if object_list.has_next %}
+            <a href="?page={{ object_list.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}

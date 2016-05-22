@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block page_title %}
+  <div class="container-fluid">
+    <h4 class="h4" style="text-align: center;">Artistas.</h4>
+  </div>
+
+  <div class="container-fluid">
+    <label><br></label>
+  </div>
+{% endblock %}
+{% block content %}
+{% load staticfiles %}
+<div class="container-fluid bg-2 text-center">
+<table class = "table table-striped">
+	<tr>
+		<th>Nombre</th>
+		<th>Email</th>
+		<th>Telefono</th>
+
+	</tr>
+{% for item in object_list %}
+<tr>
+	<td>{{ item.user_profile | capfirst }}</td>
+	<td>{{ item.mail }}</td>
+	<td>{{ item.phone }}</td>
+
+</tr>
+{% endfor%}
+</table>
+</div>
+{% endblock %}

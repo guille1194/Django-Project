@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Busqueda{% endblock %}
+{% block header %}
+	Gallery&trade;
+{% endblock %}
+
+{% block content %}
+
+  {% if artist %}
+    {% for Artist in artists %}
+    <div class="col-xs-12" style="text-align: center">
+      <div class="row">
+        <div class="thumbnail">
+          <h3>{{ Artist.user_profile | title }}</h3>
+          <h6>{{Artist.mail}}</h6>
+          <h6>{{Artist.phone}}</h6><br>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  {% else %}
+    {% for Art in artworks %}
+
+        <div class="thumbnail" style="text-align: center">
+          {% if Art.art_photo %}
+            <img src="{{ Art.art_photo.url }}" alt="" class="img-responsive">
+          {% endif %}
+          <h3>{{ Art.art_name | title }} | {{Art.artist | title }}</h3>
+          <h6>{{ Art.description | capfirst }}</h6>
+        </div>
+    {% endfor %}
+  {% endif %}
+
+{% endblock %}

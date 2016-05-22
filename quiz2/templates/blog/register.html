@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Registrar{% endblock %}
+{% block header %}
+	Gallery&trade;
+{% endblock %}
+{% block page_title %}
+  <div class="container-fluid">
+    <h4 class="h4" style="text-align: center;">Registrar.</h4>
+  </div>
+
+  <div class="container-fluid">
+    <label><br></label>
+  </div>
+{% endblock %}
+{% block content %}
+	{% if user.is_active %}
+	<div style="text-align: center;"><h2 >Bienvenido {{ user.username | capfirst }}!</h2><br>
+		<a href="/logout" class="btn btn-default">Cerrar sesion</a>
+	</div>
+
+	{% else %}
+
+
+		{% if form.errors %}
+			<div class="alert alert-danger col-xs-8 col-xs-push-2" role="alert">
+			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			<span class="sr-only">Error:</span>
+			&nbsp;Algo esta mal.
+			</div>
+		{% endif %}
+
+		<form method="POST">
+			{% csrf_token %}
+
+			<div class="field-row">
+
+				<div class="input-group col-xs-8 col-xs-push-2">
+				<span class="input-group-addon" id="basic-addon1"><a class="glyphicon"></a></span>
+					<input name="username" type = "text" id = "id_username" class="form-control" placeholder="nombre de usuario" aria-describedby="basic-addon1">
+				</div>
+
+				<label></label>
+
+				<div class="input-group col-xs-8 col-xs-push-2">
+					<div class="input-group-addon" id="basic-addon1"><a class="glyphicon"></a></div>
+					<input name="password1" id="id_password1" type="password" class="form-control" placeholder="nueva contraseña" aria-describedby="basic-addon1">
+				</div>
+
+				<label></label>
+
+				<div class="input-group col-xs-8 col-xs-push-2">
+					<div class="input-group-addon" id="basic-addon1"><a class="glyphicon"></a></div>
+					<input name="password2" id="id_password2" type="password" class="form-control" placeholder="confirmar contraseña" aria-describedby="basic-addon1">
+				</div>
+
+				<label></label>
+
+				<div class="input-group col-xs-8 col-xs-push-2">
+					<div class="input-group-addon" id="basic-addon1"><a class="glyphicon"></a></div>
+					<input name="mail" id="id_mail" type="text" class="form-control" placeholder="email" aria-describedby="basic-addon1">
+				</div>
+
+				<label></label>
+
+				<div class="input-group col-xs-8 col-xs-push-2">
+					<div class="input-group-addon" id="basic-addon1"><a class="glyphicon"></a></div>
+					<input name="phone" id="id_phone" type="text" class="form-control" placeholder="telefono" aria-describedby="basic-addon1">
+				</div>
+
+				<label></label>
+
+				<div class="input-group col-xs-8 col-xs-push-2">
+					<button type="submit" class="btn btn-default col-xs-12">Registrar</button>
+				</div>
+
+				<label></label>
+
+				<div class="input-group col-xs-8 col-xs-push-2">
+					<button type="reset" class="btn btn-default col-xs-12">Cancelar</button>
+				</div>
+
+				<label></label>
+
+			</div>
+		</form>
+	{% endif %}
+{% endblock %}
