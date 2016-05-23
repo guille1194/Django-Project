@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block content %}
-
+{% if user.is_superuser %}
   {% for employee in object_list %}
         <div class="row" >
           <div class="col-xs-12">
@@ -30,7 +30,7 @@
           </div>
         </div>
   {% endfor %}
-
+{% endif %}
   <div class="pagination">
     <span class="step-links">
         {% if object_list.has_previous %}
